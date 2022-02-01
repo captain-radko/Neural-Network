@@ -1,0 +1,49 @@
+<div class="card-body">
+  <div class="row">
+    <div class="col-sm-8 col-md-8">
+      <mat-form-field color="warn">
+        <input
+          [disabled]="isLoading"
+          matInput
+          placeholder="Ticker"
+          [(ngModel)]="ticker"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="col-sm-4 col-md-4">
+      <button
+        [disabled]="isLoading"
+        class="btn btn-danger"
+        (click)="getTickerData()"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="row mt-5 mb-5">
+    <div class="col-md-5"></div>
+    <div class="col-md-2">
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+    <div class="col-md-5"></div>
+  </div>
+
+  <div *ngIf="tickerData" class="row mt-5 mb-5">
+    <div class="col-md-12">
+      <div>Asset Name: {{ tickerData?.Asset_Name }}</div>
+      <div>Neural Network 1: {{ tickerData?.Neural_Network_1 }}</div>
+      <div>
+        Neural Network 1 Confidence:
+        {{ tickerData?.Neural_Network_1_confidence }}
+      </div>
+      <div>Neural Network 2: {{ tickerData?.Neural_Network_2 }}</div>
+      <div>
+        Neural Network 2 Confidence:
+        {{ tickerData?.Neural_Network_2_confidence }}
+      </div>
+      <div>Strategy Suggestion: {{ tickerData?.Strategy_Suggestion }}</div>
+    </div>
+  </div>
+</div>

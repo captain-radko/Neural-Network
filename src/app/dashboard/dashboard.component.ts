@@ -41,4 +41,8 @@ export class DashboardComponent implements OnInit {
     this.ticker = "";
     this.tickerData = undefined;
   }
+
+  onEnter() {
+    this.getTickerData();
+  }
 }

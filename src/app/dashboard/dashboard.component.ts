@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit {
     "Neural_Network_1_confidence",
     "Neural_Network_2",
     "Neural_Network_2_confidence",
+    "Strategy_Suggestion"
   ];
   dataSource: TickerData[];
 

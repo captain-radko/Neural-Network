@@ -31,20 +31,40 @@
     <div class="col-md-5"></div>
   </div>
 
-  <div *ngIf="tickerData" class="row mt-5 mb-5">
-    <div class="col-md-12">
-      <div>Asset Name: {{ tickerData?.Asset_Name }}</div>
-      <div>Neural Network 1: {{ tickerData?.Neural_Network_1 }}</div>
-      <div>
-        Neural Network 1 Confidence:
-        {{ tickerData?.Neural_Network_1_confidence }}
-      </div>
-      <div>Neural Network 2: {{ tickerData?.Neural_Network_2 }}</div>
-      <div>
-        Neural Network 2 Confidence:
-        {{ tickerData?.Neural_Network_2_confidence }}
-      </div>
-      <div>Strategy Suggestion: {{ tickerData?.Strategy_Suggestion }}</div>
-    </div>
-  </div>
+  <!-- data table -->
+  <table *ngIf="tickerData" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="Asset_Name">
+      <th mat-header-cell *matHeaderCellDef>Asset Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.Asset_Name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Neural_Network_1">
+      <th mat-header-cell *matHeaderCellDef>Neural Network 1</th>
+      <td mat-cell *matCellDef="let element">{{ element.Neural_Network_1 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Neural_Network_1_confidence">
+      <th mat-header-cell *matHeaderCellDef>Neural Network 1 Confidance</th>
+      <td mat-cell *matCellDef="let element">{{ element.Neural_Network_1_confidence }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Neural_Network_2">
+      <th mat-header-cell *matHeaderCellDef>Neural Network 2</th>
+      <td mat-cell *matCellDef="let element">{{ element.Neural_Network_2 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Neural_Network_2_confidence">
+      <th mat-header-cell *matHeaderCellDef>Neural Network 2 Confidance</th>
+      <td mat-cell *matCellDef="let element">{{ element.Neural_Network_2_confidence }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Strategy_Suggestion">
+      <th mat-header-cell *matHeaderCellDef>Strategy Suggestion</th>
+      <td mat-cell *matCellDef="let element">{{ element.Strategy_Suggestion }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 </div>

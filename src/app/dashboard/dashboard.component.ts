@@ -14,6 +14,14 @@ export class DashboardComponent implements OnInit {
   ticker: string = "";
   isLoading: boolean = false;
   hasError: boolean = false;
+  displayedColumns: string[] = [
+    "Asset_Name",
+    "Neural_Network_1",
+    "Neural_Network_1_confidence",
+    "Neural_Network_2",
+    "Neural_Network_2_confidence",
+  ];
+  dataSource: TickerData[];
 
   constructor(private tickerService: TickerService) {}
 
@@ -32,6 +40,7 @@ export class DashboardComponent implements OnInit {
         })
       )
       .subscribe((data: TickerData) => {
+        this.dataSource = [data];
         this.tickerData = data;
         this.isLoading = false;
       });
